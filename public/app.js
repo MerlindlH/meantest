@@ -11,7 +11,14 @@ jetbrains.controller("AppCtrl", ($scope, $http) => {
   };
 
   $scope.deleteProduct = (existingProduct) =>{
-    console.log(existingProduct.name +" not deleted");
+    console.log(existingProduct.name +", "+existingProduct._id+" not deleted");
+    $http.delete(url + "/delete/"+existingProduct._id).then((done)=>{
+      console.log("delete ", done);
+      loadProducts();
+      }, (error) => {
+      console.log("deleteProduct error "+error);
+      loadProducts();
+    });
   };
 
 
@@ -20,7 +27,7 @@ jetbrains.controller("AppCtrl", ($scope, $http) => {
     $http.get(url).then((products) => {
       $scope.products = products;
     }, (error) => {
-      console.log("loadProducts error");
+      console.log("loadProducts error "+error);
     });
   }
 

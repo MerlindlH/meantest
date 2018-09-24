@@ -28,8 +28,21 @@ app.post("/add", (req, res) => {
     if(err){
       console.log("save failed");
     }else{
-      res.send();
       console.log("save successful");
+      res.send();
+    }
+  })
+});
+
+app.delete("/delete/:id", (req, res) =>{
+  console.log("delete");
+  let id = req.params.id;
+  Product.deleteOne({_id:id}, (err)=>{
+    if(err){
+      console.log("delete failed "+err);
+    }else{
+      console.log("delete successful");
+      res.send();
     }
   })
 });
