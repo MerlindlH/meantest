@@ -12,6 +12,9 @@
     <tr ng-repeat="product in products.data">
         <td>{{ product.name }}</td>
         <td>
+            <button ng-click="editProduct(product)">Edit {{product.name}}</button>
+        </td>
+        <td>
             <button ng-click="deleteProduct(product)">Delete {{product.name}}</button>
         </td>
     </tr>

@@ -34,10 +34,23 @@ app.post("/add", (req, res) => {
   })
 });
 
+app.put("/edit/:id", (req,res) =>{
+  let id = req.params.id;
+  let newObject = req.body;
+  Product.findByIdAndUpdate(id,{name:newObject.name},(err)=>{
+    if(err){
+      res.send("error");
+    }else{
+      res.send("updated");
+    }
+  });
+
+});
+
 app.delete("/delete/:id", (req, res) =>{
   console.log("delete");
   let id = req.params.id;
-  Product.deleteOne({_id:id}, (err)=>{
+  Product.findByIdAndRemove(id, (err)=>{
     if(err){
       console.log("delete failed "+err);
     }else{

@@ -10,6 +10,18 @@ jetbrains.controller("AppCtrl", ($scope, $http) => {
     });
   };
 
+  $scope.editProduct = (existingProduct) => {
+    console.log(existingProduct.name +", "+existingProduct._id+" not edited");
+    existingProduct.name=prompt("Rename",existingProduct.name);
+    $http.put(url + "/edit/"+existingProduct._id, existingProduct).then((done)=>{
+      console.log("edit ", done);
+      loadProducts();
+    }, (error) => {
+      console.log("editProduct error "+error);
+      loadProducts();
+    });
+  };
+
   $scope.deleteProduct = (existingProduct) =>{
     console.log(existingProduct.name +", "+existingProduct._id+" not deleted");
     $http.delete(url + "/delete/"+existingProduct._id).then((done)=>{
