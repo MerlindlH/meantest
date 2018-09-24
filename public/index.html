@@ -7,7 +7,7 @@
 </head>
 <body ng-app="jetbrains" ng-controller="AppCtrl as app">
 
-Angular test: 2+2={{ 2+2 }}
+Angular test: 2+2*2={{ 2+2*2 }}
 
 <table>
     <tr ng-repeat="product in products.data">
@@ -22,7 +22,6 @@ Angular test: 2+2={{ 2+2 }}
 <tr>
     <td><input type="text" placeholder="New Product name" ng-model="newProduct" /></td>
     <td><button ng-click="saveProduct(newProduct)">Save Product!</button></td>
-
 </tr>
 </table>
 
