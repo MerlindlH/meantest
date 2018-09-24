@@ -1,6 +1,7 @@
 let jetbrains = angular.module("jetbrains", []);
 
 jetbrains.controller("AppCtrl", ($scope, $http) => {
+  let app = $scope;
   let url = `http://localhost:3000`;
 
   $scope.saveProduct = (newProduct) => {
@@ -8,7 +9,11 @@ jetbrains.controller("AppCtrl", ($scope, $http) => {
       loadProducts();
     });
   };
-  
+
+  $scope.deleteProduct = (existingProduct) =>{
+    console.log(existingProduct.name +" not deleted");
+  };
+
 
   function loadProducts() {
     console.log("loadProducts");
